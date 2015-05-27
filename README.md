@@ -1,2 +1,4 @@
 # leet-code
-Codes for https://leetcode.com.
+Codes for [LeetCode][leetcode]
+
+[leetcode]: https://leetcode.com.
