@@ -43,9 +43,10 @@ class Solution {
 				current->val = unit;
 				if (l1)  l1 = l1->next;
 				if (l2)  l2 = l2->next;
-				if (NULL == l1 && NULL == l2)
+				if (NULL == l1 && NULL == l2) {
+					if (carry)  current->next = new ListNode(carry);
 					break;
-				else if (NULL == l1)
+				} else if (NULL == l1)
 					state = 2;
 				else if (NULL == l2)
 					state = 1;
