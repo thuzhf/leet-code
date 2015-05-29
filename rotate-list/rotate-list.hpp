@@ -15,6 +15,7 @@ struct ListNode {
 class Solution {
 	public:
 		ListNode *rotateRight(ListNode *head, int k) {
+			if (!head)  return NULL;
 			ListNode *ret = new ListNode(0);
 			ListNode *current = ret;
 			vector<int> tmp;
