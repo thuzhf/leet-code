@@ -1,6 +1,6 @@
 IDIR=.
 CC=g++
-CFLAGS=-I$(IDIR)
+CFLAGS=-I$(IDIR) -std=c++11
 LDFLAGS=
 
 ODIR=obj
@@ -10,7 +10,7 @@ EXECUTABLE=a.out
 LIBS=-L.
 
 # FIXME
-_DEPS=xxx.hpp
+_DEPS=permutations.hpp
 DEPS=$(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ=main.o
