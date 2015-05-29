@@ -24,6 +24,7 @@ class Solution {
 				head = head->next;
 			}
 			unsigned n = tmp.size();
+			k %= n;
 			for (unsigned i = 0; i < n; ++i) {
 				unsigned index = (n - k + i) % n;
 				current->val = tmp[index];
