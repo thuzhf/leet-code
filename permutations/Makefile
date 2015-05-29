@@ -9,7 +9,8 @@ EXECUTABLE=a.out
 
 LIBS=-L.
 
-_DEPS=add-two-numbers.hpp
+# FIXME
+_DEPS=xxx.hpp
 DEPS=$(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ=main.o

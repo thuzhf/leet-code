@@ -1,7 +1,8 @@
-# vim tmp files
+## for tmp files
 *.swp
 *~
 
+## for c++
 # Compiled Object files
 *.slo
 *.lo
