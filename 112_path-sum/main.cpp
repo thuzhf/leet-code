@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
 	Solution sol;
-	TreeNode* root = new TreeNode(5);
+	TreeNode* root = new TreeNode(22);
 	root->left = new TreeNode(4);
 	root->right = new TreeNode(8);
 	root->left->left = new TreeNode(11);
