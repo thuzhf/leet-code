@@ -14,7 +14,7 @@ class Solution {
 			size1 = first.size();
 			size2 = second.size();
 			auto total_size = size1 + size2;
-			auto half = total_size / 2 - 1;
+			auto half = (total_size - 1) / 2 - 1;
 			double median;
 			if (!size1) {
 				if (!size2) {
@@ -53,12 +53,21 @@ class Solution {
 			if (total_size % 2)
 				median = (first[pilot1] >= second[pilot2] ? first[pilot1] : second[pilot2]);
 			else {
-				median = second[pilot2];
-				if (pilot2 - 1 >= 0 && second[pilot2 - 1] > first[pilot1])
-					median += second[pilot2 - 1];
-				else
-					median += first[pilot1];
-				median /= 2.0;
+				int l_max = 0, r_min = 0;
+				if (pilot1 >= 0 && pilot2 >= 0)
+					l_max = (first[pilot1] >= second[pilot2] ? first[pilot1] : second[pilot2]);
+				else if (pilot1 >= 0)
+					l_max = first[pilot1];
+				else if (pilot2 >= 0)
+					l_max = second[pilot2];
+
+				if (pilot1 + 1 < size1 && pilot2 + 1 < size2)
+					r_min = (first[pilot1 + 1] < second[pilot2 + 1] ? first[pilot1 + 1] : second[pilot2 + 1]);
+				else if (pilot1 + 1 < size1)
+					r_min = first[pilot1 + 1];
+				else if (pilot2 + 1 < size2)
+					r_min = second[pilot2 + 1];
+				median = (l_max + r_min) / 2.0;
 			}
 
 			return median;

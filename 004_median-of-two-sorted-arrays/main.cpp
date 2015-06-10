@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
 	Solution sol;
-	vector<int> nums1({1}), nums2({1});
+	vector<int> nums1({2,3}), nums2({1,4});
 	double median = sol.findMedianSortedArrays(nums1, nums2);
 	cout << median << endl;
 
