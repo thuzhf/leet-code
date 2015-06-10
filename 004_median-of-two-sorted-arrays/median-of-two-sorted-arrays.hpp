@@ -40,11 +40,11 @@ class Solution {
 					break;
 				}
 
-				pilot1 = (l + r) / 2; // pilot1 + 1 < size1 holds
+				pilot1 = (l + r) / 2;
 				pilot2 = half - pilot1; // pilot2 + 1 < size2 holds
 				if (first[pilot1] > second[pilot2 + 1])
 					r = pilot1;
-				else if (second[pilot2] > first[pilot1 + 1])
+				else if (pilot1 + 1 < size1 && second[pilot2] > first[pilot1 + 1])
 					l = pilot1 + 1;
 				else
 					break;
@@ -52,8 +52,14 @@ class Solution {
 
 			if (total_size % 2)
 				median = (first[pilot1] >= second[pilot2] ? first[pilot1] : second[pilot2]);
-			else
-				median = (first[pilot1] + second[pilot2]) / 2.0;
+			else {
+				median = second[pilot2];
+				if (pilot2 - 1 >= 0 && second[pilot2 - 1] > first[pilot1])
+					median += second[pilot2 - 1];
+				else
+					median += first[pilot1];
+				median /= 2.0;
+			}
 
 			return median;
 		}
