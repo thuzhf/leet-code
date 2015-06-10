@@ -41,8 +41,8 @@ class Solution {
 				}
 
 				pilot1 = (l + r) / 2;
-				pilot2 = half - pilot1; // pilot2 + 1 < size2 holds
-				if (first[pilot1] > second[pilot2 + 1])
+				pilot2 = half - pilot1;
+				if (pilot2 + 1 < size2 && first[pilot1] > second[pilot2 + 1])
 					r = pilot1;
 				else if (pilot1 + 1 < size1 && second[pilot2] > first[pilot1 + 1])
 					l = pilot1 + 1;
