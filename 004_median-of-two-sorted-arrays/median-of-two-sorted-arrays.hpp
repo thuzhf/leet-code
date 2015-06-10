@@ -15,6 +15,18 @@ class Solution {
 			size2 = second.size();
 			auto total_size = size1 + size2;
 			auto half = total_size / 2 - 1;
+			double median;
+			if (!size1) {
+				if (!size2) {
+					median = 0;
+					return median;
+				}
+				if (size2 % 2)
+					median = second[size2 / 2];
+				else
+					median = (second[size2 / 2 - 1] + second[size2 / 2]) / 2.0;
+				return median;
+			}
 
 			decltype(size1) l = 0, r = size1, pilot1, pilot2;
 			while (true) {
@@ -38,7 +50,6 @@ class Solution {
 					break;
 			}
 
-			double median;
 			if (total_size % 2)
 				median = (first[pilot1] >= second[pilot2] ? first[pilot1] : second[pilot2]);
 			else
