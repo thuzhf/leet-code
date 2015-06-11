@@ -9,7 +9,8 @@ using namespace std;
 int main()
 {
 	Solution sol;
-	string s ("1234321456787654");
+	string s;
+	cin >> s;
 	cout << sol.longestPalindrome(s) << endl;
 
 	return 0;

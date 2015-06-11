@@ -1,6 +1,7 @@
 #ifndef LONGEST_PALINDROMIC_SUBSTRING_HPP_
 #define LONGEST_PALINDROMIC_SUBSTRING_HPP_
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -24,25 +25,24 @@ class Solution {
 			for (sst i = 0; i < string_size; ++i)
 				mystr[i * 2 + 1] = s[i];
 			
-			std::vector<sst> all_max (mystr_size, 0);
+			std::vector<sst> all_max (mystr_size, 1);
 			sst gmax = 0;
 			sst gleft = 0;
 			sst gright = 0;
 			sst rightmost = 0;
 			sst left_of_rightmost = 0;
 			for (sst i = 0; i < mystr_size; ++i) {
-				if (mystr_size - i - 1 <= gmax)
+				if (mystr_size - i <= gmax)
 					break;
-
 				if (i >= rightmost) {
 					sst l = i - 1, r = i + 2;
-					while (l >= 0 && r <= mystr_size && mystr[l] == mystr[r - 1]) {
+					while (l != -1 && r <= mystr_size && mystr[l] == mystr[r - 1]) {
 						--l; ++r;
 					}
 					++l; --r;
 					rightmost = r;
 					left_of_rightmost = l;
-					sst tmp_max = (r - l) / 2;
+					sst tmp_max = (r - l) / 2 + 1;
 					all_max[i] = tmp_max;
 					if (tmp_max > gmax) {
 						gmax = tmp_max;
@@ -50,21 +50,21 @@ class Solution {
 						gright = r;
 					}
 				} else {
-					sst mirror_pos = gleft + gright - i;
+					sst mirror_pos = rightmost - 1 + left_of_rightmost - i;
 					sst mirror_max = all_max[mirror_pos];
-					sst tmp_distance = mirror_pos - gleft;
-					if (mirror_max < tmp_distance)
+					sst tmp_distance = mirror_pos - left_of_rightmost;
+					if (mirror_max - 1 < tmp_distance)
 						all_max[i] = mirror_max;
 					else {
 						sst r = rightmost + 1;
 						sst l = i * 2 - (r - 1);
-						while (l >= 0 && r <= mystr_size && mystr[l] == mystr[r]) {
+						while (l != -1 && r <= mystr_size && mystr[l] == mystr[r - 1]) {
 							--l; ++r;
 						}
 						++l; --r;
 						rightmost = r;
 						left_of_rightmost = l;
-						sst tmp_max = (r - l) / 2;
+						sst tmp_max = (r - l) / 2 + 1;
 						all_max[i] = tmp_max;
 						if (tmp_max > gmax) {
 							gmax = tmp_max;
