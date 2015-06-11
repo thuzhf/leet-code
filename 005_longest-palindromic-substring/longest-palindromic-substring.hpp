@@ -74,7 +74,7 @@ class Solution {
 					}
 				}
 			}
-			return s.substr(gleft / 2, gmax);
+			return s.substr(gleft / 2, gmax - 1);
 		}
 };
 
