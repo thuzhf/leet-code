@@ -5,9 +5,9 @@ class Solution {
 	public:
 		int reverse(int x) {
 			int ret = 0;
-			bool positive = true;
+			int sign = 1;
 			if (x < 0) {
-				positive = false;
+				sign = -1;
 				x = -x;
 			}
 			int special = 0x7fffffff / 10;
@@ -21,7 +21,7 @@ class Solution {
 				ret += tail;
 			}
 
-			return ret;
+			return ret * sign;
 		}
 };
 
