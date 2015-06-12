@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
 int main()
 {
-	// FIXME
+	Solution sol;
 
 	return 0;
 }
