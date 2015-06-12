@@ -17,7 +17,7 @@ class Solution {
 				for (int i = 0; i < numCols + remainder; ++i)
 					ret[i] = s[i * 2];
 				for (int i = 0; i < numCols; ++i)
-					ret[numCols + i] = s[i * 2 + 1];
+					ret[numCols + remainder + i] = s[i * 2 + 1];
 
 				return ret;
 			}
