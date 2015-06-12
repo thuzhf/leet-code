@@ -52,10 +52,8 @@ class Solution {
 						} else {
 							char c = p[pindex];
 							pindex += 2;
-							if (sindex < s.size() && s[sindex] == p[pindex]) {
+							if (sindex < s.size() && s[sindex] == c) {
 								std::vector<Match> tmp;
-								char c = p[pindex];
-								pindex += 2;
 								while (sindex < s.size() && s[sindex] == c)
 									tmp.push_back(Match(sindex++, pindex));
 								match_.push_back(std::move(tmp));
