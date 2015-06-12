@@ -14,13 +14,11 @@ class Solution {
 				std::string ret (str_size, 0);
 				auto numCols = str_size / numRows;
 				auto remainder = str_size % numRows;
-				if (remainder) {
-					++numCols;
-					for (int i = 0; i < numCols; ++i)
-						ret[i] = s[i * 2];
-					for (int i = 0; i < numCols - 1; ++i)
-						ret[numCols + i] = s[i * 2 + 1];
-				}
+				for (int i = 0; i < numCols + remainder; ++i)
+					ret[i] = s[i * 2];
+				for (int i = 0; i < numCols; ++i)
+					ret[numCols + i] = s[i * 2 + 1];
+
 				return ret;
 			}
 
