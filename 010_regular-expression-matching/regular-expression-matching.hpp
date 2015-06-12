@@ -31,7 +31,7 @@ class Solution {
 						}
 					}
 				} else { // if this is last char or the next is not *
-					if (sindex >= s.size() || s[sindex] != p[pindex])
+					if (sindex >= s.size() || p[pindex] != '.' && s[sindex] != p[pindex])
 						return false;
 					else {
 						++sindex;
