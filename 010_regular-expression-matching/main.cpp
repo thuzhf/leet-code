@@ -10,7 +10,7 @@ int main()
 {
 	Solution sol;
 	string s = "asdf;ljk";
-	string p = "asdf.*";
+	string p = ".*kl";
 	cout << sol.isMatch(s, p) << endl;
 
 
