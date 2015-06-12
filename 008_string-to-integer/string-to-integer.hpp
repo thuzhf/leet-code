@@ -35,14 +35,14 @@ class Solution {
 				} else {
 					int tmp = str[start] - '0';
 					if (ret > special || ret == special && (tmp > 8 || tmp == 8 && sign == 1)) {// overflow
-						std::cout << "$$$: " << sign << std::endl;
-						return 0;
+						if (sign == 1)  return 0x7fffffff;
+						if (sign == -1)  return 0x80000000;
 					} else if (ret == special && tmp == 8 && sign == -1) {
 						if (start + 1 == str_size || !isDigit(str[start + 1])) {
 							ret = ret * 10 + tmp; // 0x8fffffff
 							return ret;
 						} else
-							return 0;
+							return 0x80000000;
 					} else {
 						ret = ret * 10 + tmp;
 						++start;
