@@ -4,6 +4,7 @@
 class Solution {
 	public:
 		int reverse(int x) {
+			if (0x80000000 == x)  return 0;
 			int ret = 0;
 			int sign = 1;
 			if (x < 0) {
