@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
 	Solution sol;
-	string s = "    -9f789831ff";
+	string s = "-2147483648";
 	cout << sol.myAtoi(s) << endl;
 
 

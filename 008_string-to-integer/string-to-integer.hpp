@@ -34,9 +34,10 @@ class Solution {
 					return ret * sign;
 				} else {
 					int tmp = str[start] - '0';
-					if (ret > special || ret == special && (tmp > 8 || tmp == 8 && sign)) {// overflow
+					if (ret > special || ret == special && (tmp > 8 || tmp == 8 && sign == 1)) {// overflow
+						std::cout << "$$$: " << sign << std::endl;
 						return 0;
-					} else if (ret == special && tmp == 8 && !sign) {
+					} else if (ret == special && tmp == 8 && sign == -1) {
 						if (start + 1 == str_size || !isDigit(str[start + 1])) {
 							ret = ret * 10 + tmp; // 0x8fffffff
 							return ret;
