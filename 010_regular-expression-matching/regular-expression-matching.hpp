@@ -42,25 +42,27 @@ class Solution {
 				} else { // if p doesn't reach end, then continue matching
 					if (pindex + 1 < p.size() && p[pindex + 1] == '*') { // if next is *, may produce branch
 						if (p[pindex] == '.') { // produce many branches
-							std::vector<Match> tmp;
 							pindex += 2;
-							while (sindex < s.size())
-								tmp.push_back(Match(sindex++, pindex));
-							match_.push_back(std::move(tmp));
+							if (sindex < s.size()) {
+								std::vector<Match> tmp;
+								while (sindex < s.size())
+									tmp.push_back(Match(sindex++, pindex));
+								match_.push_back(std::move(tmp));
+							}
 						} else {
-							if (s[sindex] == p[pindex]) {
+							char c = p[pindex];
+							pindex += 2;
+							if (sindex < s.size() && s[sindex] == p[pindex]) {
 								std::vector<Match> tmp;
 								char c = p[pindex];
 								pindex += 2;
 								while (sindex < s.size() && s[sindex] == c)
 									tmp.push_back(Match(sindex++, pindex));
 								match_.push_back(std::move(tmp));
-							} else {
-								pindex += 2;
 							}
 						}
 					} else { // if next is not *, then simply compare s and p
-						if (s[sindex] == p[pindex]) {
+						if (sindex < s.size() && s[sindex] == p[pindex]) {
 							++sindex;
 							++pindex;
 						} else if (!backtrack(sindex, pindex))
