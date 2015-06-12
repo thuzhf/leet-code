@@ -9,8 +9,8 @@ using namespace std;
 int main()
 {
 	Solution sol;
-	string s = "bb";
-	string p = "b*";
+	string s = "bab";
+	string p = "b.b";
 	cout << sol.isMatch(s, p) << endl;
 
 

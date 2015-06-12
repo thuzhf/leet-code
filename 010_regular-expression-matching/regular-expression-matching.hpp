@@ -60,7 +60,7 @@ class Solution {
 							}
 						}
 					} else { // if next is not *, then simply compare s and p
-						if (sindex < s.size() && s[sindex] == p[pindex]) {
+						if (sindex < s.size() && (p[pindex] == '.' || s[sindex] == p[pindex])) {
 							++sindex;
 							++pindex;
 						} else if (!backtrack(sindex, pindex))
