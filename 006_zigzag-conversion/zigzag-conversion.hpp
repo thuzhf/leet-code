@@ -7,7 +7,24 @@
 
 class Solution {
 	public:
+		// a better solution
 		std::string convert(std::string s, int numRows) {
+			if (1 == numRows) return s;
+			auto str_size = s.size();
+			std::string r (str_size, 0);
+			int step = (numRows - 1) * 2;
+			for (int i = 0, index = 0; i < numRows; ++i) {
+				for (int j = i; j < str_size; j += step) {
+					r[index++] = s[j];
+					int tmp = j + 2 * (numRows - 1 - i);
+					if (i > 0 && i < numRows - 1 && tmp < str_size)
+						r[index++] = s[tmp];
+				}
+			}
+			return r;
+		}
+
+		std::string convert2(std::string s, int numRows) {
 			if (1 == numRows)  return s;
 			if (2 == numRows) {
 				auto str_size = s.size();
