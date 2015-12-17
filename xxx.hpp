@@ -1,9 +1,7 @@
-#ifndef XXX_HPP_
-#define XXX_HPP_
+#pragma once
 
 class Solution {
 	public:
 		// FIXME
 };
 
-#endif // XXX_HPP_
