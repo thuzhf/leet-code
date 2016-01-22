@@ -1,5 +1,5 @@
 // FIXME
-#include "xxx.hpp"
+#include "xxx.hh"
 
 #include <iostream>
 #include <vector>
