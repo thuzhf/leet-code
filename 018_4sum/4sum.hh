@@ -3,7 +3,7 @@
 * @Email:  thuzhf@gmail.com
 * @Date:   2016-01-22 21:43:19
 * @Last Modified by:   zhangfang
-* @Last Modified time: 2016-01-22 22:06:01
+* @Last Modified time: 2016-01-22 22:17:14
 */
 #pragma once
 #include <iostream>
@@ -13,13 +13,18 @@
 
 class Solution {
 public:
+    // O(n^3) time complexity
     std::vector<std::vector<int> > fourSum(std::vector<int>& nums, int target) {
         std::sort(nums.begin(), nums.end());
         std::vector<std::vector<int> > ans;
         size_t size = nums.size();
         if (size < 4) return ans;
-        for (size_t i = 0; i < size; ++i) {
+        for (size_t i = 0; i < size - 3; ++i) {
             if (i >0 && nums[i] == nums[i - 1])
+                continue;
+            if (nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target)
+                break;
+            if (nums[i] + nums[size - 1] + nums[size - 2] + nums[size - 3] < target)
                 continue;
             int target_for_three_sum = target - nums[i];
             std::vector<int> nums_for_three_sum(nums.begin() + i + 1, nums.end());
@@ -40,8 +45,12 @@ public:
         std::vector<std::vector<int> > ans;
         if (nums_size < 3) return ans;
 
-        for (vst i = 0; i < nums_size; ++i) {
+        for (vst i = 0; i < nums_size - 2; ++i) {
             if (i > 0 && nums[i - 1] == nums[i])
+                continue;
+            if (nums[i] + nums[i + 1] + nums[i + 2] > target)
+                break;
+            if (nums[i] + nums[nums_size - 1] + nums[nums_size - 2] < target)
                 continue;
             vst j = i + 1, k = nums_size - 1;
             while (j < k) {
