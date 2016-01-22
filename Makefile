@@ -21,7 +21,7 @@ all: $(EXECUTABLE)
 $(EXECUTABLE): $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
-$(ODIR)/%.o: %.cpp $(DEPS)
+$(ODIR)/%.o: %.cc $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 .PHONY: clean

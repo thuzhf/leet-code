@@ -10,7 +10,7 @@ EXECUTABLE=a.out
 LIBS=-L.
 
 # FIXME
-_DEPS=xxx.hh
+_DEPS=3sum.hh
 DEPS=$(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ=main.o
@@ -21,7 +21,7 @@ all: $(EXECUTABLE)
 $(EXECUTABLE): $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
-$(ODIR)/%.o: %.cpp $(DEPS)
+$(ODIR)/%.o: %.cc $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 .PHONY: clean
