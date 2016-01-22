@@ -22,6 +22,7 @@ else:
 def main():
     if len(sys.argv) != 2:
         print('Usage: ./setup.py dir_name')
+        sys.exit()
     dir_name = sys.argv[1]
     question_name = dir_name.split('_')[-1]
     sp.call(['mkdir', dir_name])
