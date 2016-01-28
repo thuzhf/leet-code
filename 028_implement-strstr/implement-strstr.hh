@@ -3,7 +3,7 @@
 * @Email:  thuzhf@gmail.com
 * @Date:   2016-01-26 21:48:37
 * @Last Modified by:   zhangfang
-* @Last Modified time: 2016-01-26 22:09:00
+* @Last Modified time: 2016-01-28 20:16:18
 */
 #pragma once
 #include <iostream>
@@ -12,10 +12,57 @@
 #include <algorithm>
 
 class Solution {
+private:
+    int* next_table_ = nullptr;
 public:
+    ~Solution() {
+        if (next_table_)
+            delete [] next_table_;
+    }
+    // LMP algorithm
+    // time complexity: O(n1 + n2)
+    // space complexity: O(n1)
+    int strStr(std::string haystack, std::string needle) {
+        build_next_table(needle);
+        auto size1 = haystack.size();
+        auto size2 = needle.size();
+        int i = 0, j = 0;
+        while (i + size2 <= size1) {
+            j = 0;
+            while (j < size2 && needle[j] == haystack[i + j]) ++j;
+            if (j == size2) return i;
+            i = i + j - next_table_[j];
+        }
+        return -1;
+    }
+
+    void build_next_table(std::string needle) {
+        auto size = needle.size();
+        next_table_ = new int[size + 1];
+        next_table_[0] = -1;
+        next_table_[1] = 0;
+        for (int i = 2, next = next_table_[1]; i <= size; ++i) {
+            while (true) {
+                if (next >= 0) {
+                    if (needle[next] == needle[i - 1]) {
+                        next_table_[i] = next + 1;
+                        next = next_table_[i];
+                        break;
+                    } else {
+                        next = next_table_[next];
+                    }
+                } else {
+                    next_table_[i] = 0;
+                    next = next_table_[i];
+                    break;
+                }
+            }
+        }
+    }
+
     // time complexity: O(n1*n2)
     // space complexity: O(1)
-    int strStr(std::string haystack, std::string needle) {
+    int strStr2(std::string haystack, std::string needle) {
         auto size1 = haystack.size();
         auto size2 = needle.size();
         int ans = -1;
