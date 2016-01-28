@@ -3,7 +3,7 @@
 * @Email:  thuzhf@gmail.com
 * @Date:   2016-01-26 21:48:37
 * @Last Modified by:   zhangfang
-* @Last Modified time: 2016-01-28 20:16:18
+* @Last Modified time: 2016-01-28 20:24:13
 */
 #pragma once
 #include <iostream>
@@ -19,7 +19,7 @@ public:
         if (next_table_)
             delete [] next_table_;
     }
-    // LMP algorithm
+    // KMP algorithm
     // time complexity: O(n1 + n2)
     // space complexity: O(n1)
     int strStr(std::string haystack, std::string needle) {
